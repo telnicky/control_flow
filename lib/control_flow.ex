@@ -3,16 +3,7 @@ defmodule ControlFlow do
   Documentation for ControlFlow.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ControlFlow.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def fizz(number) do
+    "FIX ME"
   end
 end
