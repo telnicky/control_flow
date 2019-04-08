@@ -4,6 +4,10 @@ defmodule ControlFlow do
   """
 
   def fizz(number) do
-    "FIX ME"
+    if rem(number, 3) == 0 do
+      "fizz"
+    else
+      number
+    end
   end
 end

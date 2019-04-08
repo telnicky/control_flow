@@ -1,6 +1,5 @@
 defmodule ControlFlowTest do
   use ExUnit.Case
-  doctest ControlFlow
 
   describe "ControlFlow.fizz" do
     test "it returns `fizz` when number is divisible by 3" do
