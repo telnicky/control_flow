@@ -11,23 +11,20 @@ defmodule ControlFlow do
     end
   end
 
-  def upto(n) when n > 0, do: _upto(1, n, [])
+  def upto(number) when number > 0 do
+    1..number |> Enum.map(&fizzbuzz/1)
+  end
 
-  defp _upto(_current, 0, result), do: Enum.reverse(result)
-
-  defp _upto(current, left, result) do
-    next_answer =
-      cond do
-        rem(current, 3) == 0 and rem(current, 5) == 0 ->
-          "fizzbuzz"
-        rem(current, 3) == 0 ->
-          "fizz"
-        rem(current, 5) == 0 ->
-          "buzz"
-        true ->
-          current
-      end
-
-    _upto(current + 1, left - 1, [ next_answer | result ])
+  defp fizzbuzz(number) do
+    cond do
+      rem(number, 3) == 0 and rem(number, 5) == 0 ->
+        "fizzbuzz"
+      rem(number, 3) == 0 ->
+        "fizz"
+      rem(number, 5) == 0 ->
+        "buzz"
+      true ->
+        number
+    end
   end
 end
