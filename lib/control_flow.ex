@@ -11,6 +11,7 @@ defmodule ControlFlow do
     end
   end
 
+  # TODO: Rewrite using `case`
   def upto(number) when number > 0 do
     1..number |> Enum.map(&fizzbuzz/1)
   end
