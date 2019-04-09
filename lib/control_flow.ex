@@ -3,28 +3,16 @@ defmodule ControlFlow do
   Documentation for ControlFlow.
   """
 
-  def fizz(number) do
-    if rem(number, 3) == 0 do
-      "fizz"
-    else
-      number
-    end
-  end
+  ##
+  # Public
+  #
 
-  def upto(number) when number > 0 do
-    1..number |> Enum.map(&fizzbuzz/1)
-  end
-
-  defp fizzbuzz(number) do
-    cond do
-      rem(number, 3) == 0 and rem(number, 5) == 0 ->
-        "fizzbuzz"
-      rem(number, 3) == 0 ->
-        "fizz"
-      rem(number, 5) == 0 ->
-        "buzz"
-      true ->
-        number
+  def fizzbuzz(number) do
+    case ApiClient.fetch(number) do
+      {:ok, result} ->
+        result
+      {:error, error} ->
+        error
     end
   end
 end
