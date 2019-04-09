@@ -3,6 +3,10 @@ defmodule ControlFlow do
   Documentation for ControlFlow.
   """
 
+  defmodule ApiError do
+    defexception [:message]
+  end
+
   ##
   # Public
   #
@@ -10,10 +14,14 @@ defmodule ControlFlow do
   def fizzbuzz(number) do
     case ApiClient.fetch(number) do
       {:ok, result} ->
-        get_fizzbuzz(result)
+        {:ok, get_fizzbuzz(result)}
       {:error, error} ->
-        error
+        {:error, error}
     end
+  end
+
+  def fizzbuzz!(number) do
+    fizzbuzz(number)
   end
 
   ##
