@@ -3,20 +3,14 @@ defmodule ControlFlow do
   Documentation for ControlFlow.
   """
 
-  def fizz(number) do
-    if rem(number, 3) == 0 do
-      "fizz"
-    else
-      number
-    end
+  ##
+  # COND
+  #
+  def upto_cond(number) when number > 0 do
+    1..number |> Enum.map(&fizzbuzz_cond/1)
   end
 
-  # TODO: Rewrite using `case`
-  def upto(number) when number > 0 do
-    1..number |> Enum.map(&fizzbuzz/1)
-  end
-
-  defp fizzbuzz(number) do
+  defp fizzbuzz_cond(number) do
     cond do
       rem(number, 3) == 0 and rem(number, 5) == 0 ->
         "fizzbuzz"
@@ -28,4 +22,34 @@ defmodule ControlFlow do
         number
     end
   end
+
+  ##
+  # CASE
+  #
+  def upto_case(number) when number > 0 do
+    1..number |> Enum.map(&fizzbuzz_case/1)
+  end
+
+  defp fizzbuzz_case(number) do
+    case {rem(number, 3), rem(number, 5)} do
+      {0, 0} -> "fizzbuzz"
+      {0, _} -> "fizz"
+      {_, 0} -> "buzz"
+      _ -> number
+    end
+  end
+
+  ##
+  # Functional Pattern Match
+  #
+  def upto_func(number) when number > 0 do
+    1..number |> Enum.map(&fizzbuzz_func/1)
+  end
+
+  defp fizzbuzz_func(n), do: fizzword_func(n, rem(n, 3), rem(n, 5))
+
+  defp fizzword_func(_n, 0, 0), do: "fizzbuzz"
+  defp fizzword_func(_n, 0, _), do: "fizz"
+  defp fizzword_func(_n, _, 0), do: "fizz"
+
 end
