@@ -22,9 +22,6 @@ defmodule ControlFlow do
 
   defp get_fizzbuzz(response) do
     case response do
-      %{fizzbuzz: true} -> "fizzbuzz"
-      %{fizz: true} -> "fizz"
-      %{buzz: true} -> "buzz"
       fizzbuzz -> fizzbuzz.number
     end
   end
